@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>W3 ID Login</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: #f5f5f5;
+        }
+        .login-container {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            width: 320px;
+            text-align: center;
+        }
+        h2 {
+            margin-bottom: 20px;
+        }
+        .input-group {
+            margin-bottom: 15px;
+            position: relative;
+        }
+        input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            font-size: 16px;
+        }
+        .error-message {
+            color: red;
+            font-size: 12px;
+            text-align: left;
+            margin-top: 4px;
+        }
+        .toggle-password {
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            cursor: pointer;
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            background: #6c5ce7;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background 0.3s;
+        }
+        button:hover {
+            background: #5a48d1;
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <h2>W3 ID Login</h2>
+        <div class="input-group">
+            <input type="text" id="w3id" placeholder="Enter your W3 ID">
+            <div class="error-message" id="w3id-error">Invalid W3 ID</div>
+        </div>
+        <div class="input-group">
+            <input type="password" id="password" placeholder="Enter your password">
+            <span class="toggle-password" onclick="togglePassword()">👁️</span>
+            <div class="error-message" id="password-error">Password must be at least 6 characters</div>
+        </div>
+        <button onclick="validateLogin()">Login</button>
+    </div>
+    <script>
+        function togglePassword() {
+            let passwordInput = document.getElementById("password");
+            if (passwordInput.type === "password") {
+                passwordInput.type = "text";
+            } else {
+                passwordInput.type = "password";
+            }
+        }
+        function validateLogin() {
+            let w3id = document.getElementById("w3id").value;
+            let password = document.getElementById("password").value;
+            let w3idError = document.getElementById("w3id-error");
+            let passwordError = document.getElementById("password-error");
+            
+            w3idError.style.display = w3id ? "none" : "block";
+            passwordError.style.display = password.length >= 6 ? "none" : "block";
+        }
+    </script>
+</body>
+</html>
